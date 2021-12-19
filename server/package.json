@@ -4,7 +4,6 @@
   "description": "It is a url shortner",
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js",
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
