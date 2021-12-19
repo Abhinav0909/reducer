@@ -11,17 +11,25 @@ exports.createShortenUrl = async (req, res) => {
 };
 exports.redirectHandler = async (req, res) => {
   const { shortId } = req.params;
-  console.log("shortId",shortId);
+  console.log("shortId", shortId);
   //When documents are queried, they are returned as Mongoose Documents by default. With the Mongoose lean() method, the documents are returned as plain objects.
   const shortData = await url.findOne({ shortId }).lean();
-  console.log("shortData",shortData);
+  console.log("shortData", shortData);
   if (!shortData) {
     return res.sendStatus(404);
   }
   analytics.create({
     url: shortData.shortId,
   });
-  console.log("analytics",analytics)
-  console.log("redirect",shortData.destination)
+  console.log("analytics", analytics);
+  console.log("redirect", shortData.destination);
   return res.redirect(shortData.destination);
+};
+exports.getShortUrlHandler = async (req, res) => {
+  const { shortId } = req.params;
+  const shortData = await url.find({ shortId }).lean();
+  if (!shortData) {
+    return res.sendStatus(404);
+  }
+  return res.json(shortData);
 };
