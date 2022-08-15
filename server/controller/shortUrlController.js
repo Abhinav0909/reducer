@@ -27,9 +27,9 @@ exports.redirectHandler = async (req, res) => {
 };
 exports.getShortUrlHandler = async (req, res) => {
   const { shortId } = req.params;
-  const shortData = await url.find({ shortId }).lean();
+  const shortData = await url.findOne( shortId );
   if (!shortData) {
     return res.sendStatus(404);
   }
-  return res.json(shortData);
+  return res.send(shortData);
 };

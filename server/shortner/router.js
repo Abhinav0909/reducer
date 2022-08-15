@@ -6,5 +6,5 @@ shortenRouter.get("/", async (req, res) => {
 });
 shortenRouter.post("/shorten",createShortenUrl);
 shortenRouter.get("/:shortId",redirectHandler);
-shortenRouter.get("/shorten/:shortid",getShortUrlHandler);
+shortenRouter.get("/getParams/:shortid",getShortUrlHandler);
 module.exports = shortenRouter;

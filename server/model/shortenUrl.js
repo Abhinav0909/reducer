@@ -14,5 +14,5 @@ const shortenSchema = schema({
     required: true,
   },
 });
-const url = mongoose.model("shorten", shortenSchema);
+const url = mongoose.model("shortens", shortenSchema);
 module.exports = url;
